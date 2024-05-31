@@ -90,8 +90,9 @@ abstract class CopyAndroidIcons : DefaultTask() {
                 }
             }
             .filterNot { i -> i.type == "selector" }
-            .groupBy { i -> i.id + "_" + i.type }
-            .map { (_, values) -> values.maxBy { it.size }.file }
+            // .groupBy { i -> i.id + "_" + i.type }
+            // .map { (_, values) -> values.maxBy { it.size }.file }
+            .map { it.file }
         icons.forEach { file ->
             val icon = file.copyTo(out.resolve(file.name), overwrite = true)
             icon.writeText(
