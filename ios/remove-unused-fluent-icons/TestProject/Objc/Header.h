@@ -1,1 +1,0 @@
-FluentIconAddCircle20Filled
