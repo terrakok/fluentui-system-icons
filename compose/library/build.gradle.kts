@@ -8,7 +8,7 @@ plugins {
     `maven-publish`
 }
 
-group = "com.microsoft.design"
+group = "com.microsoft.design.fluentui.compose"
 version = "1.0.0"
 
 kotlin {
@@ -54,15 +54,18 @@ android {
     }
 }
 
+val copyAndroidVectorIcons = tasks.register("copyAndroidVectorIcons", CopyAndroidIcons::class) {
+    srcDir = rootProject.projectDir.resolve("../android/library/src/main/res/drawable")
+    destDir = layout.buildDirectory.dir("genComposeResources/drawable")
+}
+
 compose.resources {
     publicResClass = true
     packageOfResClass = "com.microsoft.design.compose.icons"
-}
-
-//run it once before first import
-tasks.register("copyAndroidVectorIcons", CopyAndroidIcons::class) {
-    srcDir = rootProject.projectDir.resolve("../android/library/src/main/res/drawable")
-    destDir = project.projectDir.resolve("src/commonMain/composeResources/drawable")
+    customDirectory(
+        sourceSetName = "commonMain",
+        directoryProvider = copyAndroidVectorIcons.map { it.destDir.dir("..").get() }
+    )
 }
 
 abstract class CopyAndroidIcons : DefaultTask() {
@@ -90,8 +93,6 @@ abstract class CopyAndroidIcons : DefaultTask() {
                 }
             }
             .filterNot { i -> i.type == "selector" }
-            // .groupBy { i -> i.id + "_" + i.type }
-            // .map { (_, values) -> values.maxBy { it.size }.file }
             .map { it.file }
         icons.forEach { file ->
             val icon = file.copyTo(out.resolve(file.name), overwrite = true)
