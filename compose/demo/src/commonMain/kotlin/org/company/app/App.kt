@@ -21,8 +21,11 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -35,6 +38,13 @@ import com.willowtreeapps.fuzzywuzzy.diffutils.FuzzySearch
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.sample
+import kotlinx.coroutines.withContext
 import my.nanihadesuka.compose.LazyVerticalGridScrollbar
 import my.nanihadesuka.compose.ScrollbarSettings
 import org.company.app.theme.AppTheme
@@ -47,24 +57,26 @@ import kotlin.time.measureTimedValue
 @Composable
 internal fun App() = AppTheme {
     val allItems = remember { Res.allDrawableResources.entries.toList() }
-    val (filteredItems, setFilteredItems) = remember { mutableStateOf(allItems) }
-    val (searchText, setSearchText) = remember { mutableStateOf("") }
+    var filteredItems by remember { mutableStateOf(allItems) }
 
-    LaunchedEffect(searchText) {
-        delay(300)
-        if (searchText.isEmpty()) {
-            setFilteredItems(allItems)
-        } else {
-            val new = async(Dispatchers.Default) {
-                allItems.sortedByDescending { (key, res) ->
-                    FuzzySearch.ratio(
-                        searchText.lowercase(),
-                        key.lowercase().removePrefix("ic_fluent_")
-                    )
+    val searchFlow = remember { MutableStateFlow("") }
+    val searchText by searchFlow.collectAsState()
+
+    LaunchedEffect(Unit) {
+        searchFlow
+            .sample(300)
+            .map { txt ->
+                withContext(Dispatchers.Default) {
+                    allItems.sortedByDescending { (key, res) ->
+                        FuzzySearch.ratio(
+                            txt.lowercase(),
+                            key.lowercase().removePrefix("ic_fluent_")
+                        )
+                    }
                 }
             }
-            setFilteredItems(new.await())
-        }
+            .onEach { filteredItems = it }
+            .launchIn(this)
     }
 
     Column(
@@ -79,7 +91,7 @@ internal fun App() = AppTheme {
                 modifier = Modifier.widthIn(min = 500.dp),
                 shape = RoundedCornerShape(50),
                 value = searchText,
-                onValueChange = { setSearchText(it) },
+                onValueChange = { searchFlow.value = it },
                 leadingIcon = {
                     Icon(
                         modifier = Modifier.size(24.dp),
@@ -90,7 +102,7 @@ internal fun App() = AppTheme {
                 trailingIcon = {
                     IconButton(
                         modifier = Modifier.size(24.dp),
-                        onClick = { setSearchText("") }
+                        onClick = { searchFlow.value = "" }
                     ) {
                         Icon(painterResource(Res.drawable.ic_fluent_dismiss_circle_32_light), null)
                     }
@@ -99,6 +111,9 @@ internal fun App() = AppTheme {
         }
 
         val state = rememberLazyGridState()
+        LaunchedEffect(filteredItems) {
+            state.scrollToItem(0)
+        }
         LazyVerticalGridScrollbar(
             state = state,
             settings = ScrollbarSettings.Default.copy(alwaysShowScrollbar = true)
