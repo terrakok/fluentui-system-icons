@@ -39,7 +39,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
@@ -64,17 +66,16 @@ internal fun App() = AppTheme {
 
     LaunchedEffect(Unit) {
         searchFlow
-            .sample(300)
+            .debounce(300)
             .map { txt ->
-                withContext(Dispatchers.Default) {
-                    allItems.sortedByDescending { (key, res) ->
-                        FuzzySearch.ratio(
-                            txt.lowercase(),
-                            key.lowercase().removePrefix("ic_fluent_")
-                        )
-                    }
+                allItems.sortedByDescending { (key, res) ->
+                    FuzzySearch.ratio(
+                        txt.lowercase(),
+                        key.lowercase().removePrefix("ic_fluent_")
+                    )
                 }
             }
+            .flowOn(Dispatchers.Default)
             .onEach { filteredItems = it }
             .launchIn(this)
     }
