@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'FluentIcons'
-  s.version          = '1.1.248'
+  s.version          = '1.1.303'
   s.summary          = 'FluentIcons'
 
   s.description      = <<-DESC
@@ -20,8 +20,8 @@ FluentIcons
   s.author           = { 'Microsoft, Inc.' => 'nicroma@microsoft.com' }
   s.source           = { :git => 'https://github.com/microsoft/fluentui-system-icons.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '8.0'
-  s.osx.deployment_target  = '10.12'
+  s.ios.deployment_target = '12.0'
+  s.osx.deployment_target  = '10.13'
 
   # This podspec is symlinked to the root directory of this repo
   # so all paths will need the prefix `ios/FluentIcons`
@@ -33,10 +33,19 @@ FluentIcons
   end
 
   s.subspec 'Assets' do |sp|
-    # Require this to be used as a dynamic framework
-    # `resource_bundles` are unable to load around 1 in a thousand times
-    # so we need to stick to `resources` here instead.
-    sp.resource = 'ios/FluentIcons/Assets/IconAssets.xcassets'
+    if ENV['FLUENT_ICONS_USE_RESOURCE_BUNDLES'] == '1'
+      sp.resource_bundles = {
+        'FluentIcons' => ['ios/FluentIcons/Assets/IconAssets.xcassets']
+      }
+      sp.pod_target_xcconfig = {
+        'OTHER_SWIFT_FLAGS' => '-DFLUENT_ICONS_USE_RESOURCE_BUNDLES'
+      }
+    else
+      # Require this to be used as a dynamic framework
+      # `resource_bundles` are unable to load around 1 in a thousand times
+      # so we need to stick to `resources` here instead.
+      sp.resource = 'ios/FluentIcons/Assets/IconAssets.xcassets'
+    end
   end
 
   s.subspec 'RemovalScript' do |sp|

@@ -16,10 +16,22 @@ jobs:
     name: Publish icon libraries
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+      packages: write
+      actions: write
+
     steps:
+    - name: Generate a token
+      id: generate-token
+      uses: actions/create-github-app-token@v1
+      with:
+        app-id: ${{ secrets.GH_FLUENT_CI_APP_ID }}
+        private-key: ${{ secrets.GH_FLUENT_CI_PRIVATE_KEY }}
+
     - uses: actions/checkout@v2
       with:
-        token: ${{ secrets.CI_GITHUB_TOKEN }}
+        token: ${{ steps.generate-token.outputs.token }}
 
     - name: Bump version patch
       run: |
@@ -61,19 +73,24 @@ jobs:
       run: npm run deploy:ios
       working-directory: importer
 
-    ## Flutter
-    - name: Run Flutter generate script
-      run: npm run deploy:flutter
+    - name: Build Fonts
+      run: npm run deploy:fonts
       working-directory: importer
 
-    # The name should be same as the package name on pub.dev
-    - name: 'fluentui_system_icons'
-      uses: k-paxian/dart-package-publisher@master
-      with:
-        relativePath: 'flutter'
-        skipTests: true
-        accessToken: ${{ secrets.FLUTTER_OAUTH_ACCESS_TOKEN }}
-        refreshToken: ${{ secrets.FLUTTER_OAUTH_REFRESH_TOKEN }}
+    ## Flutter
+    # Disabling for now until the pipeline job is fixed
+    # - name: Run Flutter generate script
+    #   run: npm run deploy:flutter
+    #   working-directory: importer
+
+    # # The name should be same as the package name on pub.dev
+    # - name: 'fluentui_system_icons'
+    #   uses: k-paxian/dart-package-publisher@master
+    #   with:
+    #     relativePath: 'flutter'
+    #     skipTests: true
+    #     accessToken: ${{ secrets.FLUTTER_OAUTH_ACCESS_TOKEN }}
+    #     refreshToken: ${{ secrets.FLUTTER_OAUTH_REFRESH_TOKEN }}
 
     ## Publish
     # Needs to be "-E" instead of "-r" on macOS
@@ -94,17 +111,18 @@ jobs:
         sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" ios/FluentIcons.podspec
         rm ios/FluentIcons.podspec.bk
 
-    # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version number in flutter/CHANGELOG.md
-      run: |
-        sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" flutter/CHANGELOG.md
-        rm flutter/CHANGELOG.md.bk
+    # Disabling Flutter version updates for now until the pipeline is fixed
+    # # Needs to be "-E" instead of "-r" on macOS
+    # - name: Replace version number in flutter/CHANGELOG.md
+    #   run: |
+    #     sed -i.bk -r "s/[0-9]+\.[0-9]+\.[0-9]+/$NEW_VERSION/g" flutter/CHANGELOG.md
+    #     rm flutter/CHANGELOG.md.bk
 
-    # Needs to be "-E" instead of "-r" on macOS
-    - name: Replace version number in flutter/pubspec.yaml
-      run: |
-        sed -i.bk -r "s/version: [0-9]+\.[0-9]+\.[0-9]+/version: $NEW_VERSION/g" flutter/pubspec.yaml
-        rm flutter/pubspec.yaml.bk
+    # # Needs to be "-E" instead of "-r" on macOS
+    # - name: Replace version number in flutter/pubspec.yaml
+    #   run: |
+    #     sed -i.bk -r "s/version: [0-9]+\.[0-9]+\.[0-9]+/version: $NEW_VERSION/g" flutter/pubspec.yaml
+    #     rm flutter/pubspec.yaml.bk
 
     # Needs to be "-E" instead of "-r" on macOS
     - name: Replace version number in svg-icons/package.json
@@ -194,7 +212,7 @@ jobs:
         access: public
         package: packages/react-native-icons/package.json 
 
-    ## Android
+    # Android
     - name: Run Android generate script
       env:
         # see https://github.com/JS-DevTools/npm-publish/issues/15
@@ -205,15 +223,15 @@ jobs:
     - name: Setup Java
       uses: actions/setup-java@v1
       with:
-        java-version: 8
+        java-version: 11
 
-    - name: Base64 decodes and pipes the GPG key content into the secret file
-      env:
-        GPG_KEY_CONTENT: ${{ secrets.GPG_KEY_CONTENT }}
-        SIGNING_SECRET_KEY_RING_FILE: ${{ secrets.SIGNING_SECRET_KEY_RING_FILE }}
-      run: |
-        git fetch --unshallow
-        sudo bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
+    # - name: Base64 decodes and pipes the GPG key content into the secret file
+    #   env:
+    #     GPG_KEY_CONTENT: ${{ secrets.GPG_KEY_CONTENT }}
+    #     SIGNING_SECRET_KEY_RING_FILE: ${{ secrets.SIGNING_SECRET_KEY_RING_FILE }}
+    #   run: |
+    #     git fetch --unshallow
+    #     sudo bash -c "echo '$GPG_KEY_CONTENT' | base64 -d > '$SIGNING_SECRET_KEY_RING_FILE'"
 
     - name: Build Android library
       uses: eskatos/gradle-command-action@v1
@@ -258,61 +276,60 @@ jobs:
 
     - name: Push release
       run: |
-        REMOTE_REPO="https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-        git push $REMOTE_REPO HEAD:main --follow-tags --tags
+        git push origin HEAD:main --follow-tags --tags
 
-  publish-android-demo:
-    name: Publish Android demo app
-    runs-on: ubuntu-latest
-    needs: publish-library
+  # publish-android-demo:
+  #   name: Publish Android demo app
+  #   runs-on: ubuntu-latest
+  #   needs: publish-library
 
-    steps:
-    - uses: actions/checkout@v2
+  #   steps:
+  #   - uses: actions/checkout@v2
 
-    - name: Bump version patch
-      run: |
-        grep -E "[0-9]+\.[0-9]+\.[0-9]+" FluentIcons.podspec | python3 -c """
-        import sys
-        import os
-        current_version = sys.stdin.read().strip().split(\"'\")[1]
-        major, minor, patch = current_version.split('.')
-        os.system(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> \$GITHUB_ENV')
-        """
+  #   - name: Bump version patch
+  #     run: |
+  #       grep -E "[0-9]+\.[0-9]+\.[0-9]+" FluentIcons.podspec | python3 -c """
+  #       import sys
+  #       import os
+  #       current_version = sys.stdin.read().strip().split(\"'\")[1]
+  #       major, minor, patch = current_version.split('.')
+  #       os.system(f'echo \"NEW_VERSION={major}.{minor}.{int(patch) + 1}\" >> \$GITHUB_ENV')
+  #       """
 
-    - name: Use Node 11
-      uses: actions/setup-node@v1
-      with:
-        node-version: 11.x
+  #   - name: Use Node 11
+  #     uses: actions/setup-node@v1
+  #     with:
+  #       node-version: 11.x
 
-    - run: npm install
-      working-directory: importer
+  #   - run: npm install
+  #     working-directory: importer
 
-    - name: Run generate script
-      run: npm run deploy:android
-      working-directory: importer
+  #   - name: Run generate script
+  #     run: npm run deploy:android
+  #     working-directory: importer
 
-    - name: Setup Java
-      uses: actions/setup-java@v1
-      with:
-        java-version: 8
+  #   - name: Setup Java
+  #     uses: actions/setup-java@v1
+  #     with:
+  #       java-version: 8
 
-    - name: Restore release keystore
-      run: |
-        echo "${{ secrets.ANDROID_KEYSTORE }}" > release.keystore.asc
-        gpg -d --passphrase "${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" --batch release.keystore.asc > release.keystore
+  #   - name: Restore release keystore
+  #     run: |
+  #       echo "${{ secrets.ANDROID_KEYSTORE }}" > release.keystore.asc
+  #       gpg -d --passphrase "${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" --batch release.keystore.asc > release.keystore
 
-    - name: Build Android demo app
-      uses: eskatos/gradle-command-action@v1
-      with:
-        arguments: ':sample-showcase:assembleRelease -DversionName=${{ env.NEW_VERSION }} -DversionCode=${{ github.run_number }} -Pandroid.injected.signing.store.file=/home/runner/work/fluentui-system-icons/fluentui-system-icons/release.keystore -Pandroid.injected.signing.store.password=${{ secrets.ANDROID_KEYSTORE_PASSWORD }} -Pandroid.injected.signing.key.alias=${{ secrets.ANDROID_KEYSTORE_ALIAS }} -Pandroid.injected.signing.key.password=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}'
-        build-root-directory: android
-        wrapper-directory: android
+  #   - name: Build Android demo app
+  #     uses: eskatos/gradle-command-action@v1
+  #     with:
+  #       arguments: ':sample-showcase:assembleRelease -DversionName=${{ env.NEW_VERSION }} -DversionCode=${{ github.run_number }} -Pandroid.injected.signing.store.file=/home/runner/work/fluentui-system-icons/fluentui-system-icons/release.keystore -Pandroid.injected.signing.store.password=${{ secrets.ANDROID_KEYSTORE_PASSWORD }} -Pandroid.injected.signing.key.alias=${{ secrets.ANDROID_KEYSTORE_ALIAS }} -Pandroid.injected.signing.key.password=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}'
+  #       build-root-directory: android
+  #       wrapper-directory: android
 
-    - name: Publish apk to App Center
-      uses: wzieba/AppCenter-Github-Action@v1.0.0
-      with:
-        appName: ${{ secrets.APP_CENTER_DEMO_APP_NAME }}
-        token: ${{ secrets.APP_CENTER_TOKEN }}
-        group: Public
-        file: android/sample-showcase/build/outputs/apk/release/sample-showcase-release.apk
-        releaseNotes: Please enjoy this latest version(${{ env.NEW_VERSION }}) of Fluent System Icons Demo.
+  #   - name: Publish apk to App Center
+  #     uses: wzieba/AppCenter-Github-Action@v1.0.0
+  #     with:
+  #       appName: ${{ secrets.APP_CENTER_DEMO_APP_NAME }}
+  #       token: ${{ secrets.APP_CENTER_TOKEN }}
+  #       group: Public
+  #       file: android/sample-showcase/build/outputs/apk/release/sample-showcase-release.apk
+  #       releaseNotes: Please enjoy this latest version(${{ env.NEW_VERSION }}) of Fluent System Icons Demo.

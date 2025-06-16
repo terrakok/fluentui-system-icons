@@ -5,6 +5,7 @@
 |---|---|---|---|
 |Accessibility Checkmark|<img src="assets/Accessibility Checkmark/SVG/ic_fluent_accessibility_checkmark_32_light.svg?raw=true" width="24" height="24">|`accessibilityCheckmark32Light`|`ic_fluent_accessibility_checkmark_32_light`|
 |Add|<img src="assets/Add/SVG/ic_fluent_add_32_light.svg?raw=true" width="24" height="24">|`add32Light`|`ic_fluent_add_32_light`|
+|Alert|<img src="assets/Alert/SVG/ic_fluent_alert_32_light.svg?raw=true" width="24" height="24">|`alert32Light`|`ic_fluent_alert_32_light`|
 |App Folder|<img src="assets/App Folder/SVG/ic_fluent_app_folder_32_light.svg?raw=true" width="24" height="24">|`appFolder32Light`|`ic_fluent_app_folder_32_light`|
 |App Generic|<img src="assets/App Generic/SVG/ic_fluent_app_generic_32_light.svg?raw=true" width="24" height="24">|`appGeneric32Light`|`ic_fluent_app_generic_32_light`|
 |Archive|<img src="assets/Archive/SVG/ic_fluent_archive_32_light.svg?raw=true" width="24" height="24">|`archive32Light`|`ic_fluent_archive_32_light`|
@@ -13,13 +14,17 @@
 |Arrow Down|<img src="assets/Arrow Down/SVG/ic_fluent_arrow_down_32_light.svg?raw=true" width="24" height="24">|`arrowDown32Light`|`ic_fluent_arrow_down_32_light`|
 |Arrow Download|<img src="assets/Arrow Download/SVG/ic_fluent_arrow_download_32_light.svg?raw=true" width="24" height="24">|`arrowDownload32Light`|`ic_fluent_arrow_download_32_light`|
 |Arrow Forward|<img src="assets/Arrow Forward/SVG/ic_fluent_arrow_forward_32_light.svg?raw=true" width="24" height="24">|`arrowForward32Light`|`ic_fluent_arrow_forward_32_light`|
+|Arrow Hook Down Left|<img src="assets/Arrow Hook Down Left/SVG/ic_fluent_arrow_hook_down_left_32_light.svg?raw=true" width="24" height="24">|`arrowHookDownLeft32Light`|`ic_fluent_arrow_hook_down_left_32_light`|
+|Arrow Hook Down Right|<img src="assets/Arrow Hook Down Right/SVG/ic_fluent_arrow_hook_down_right_32_light.svg?raw=true" width="24" height="24">|`arrowHookDownRight32Light`|`ic_fluent_arrow_hook_down_right_32_light`|
 |Arrow Hook Up Left|<img src="assets/Arrow Hook Up Left/SVG/ic_fluent_arrow_hook_up_left_32_light.svg?raw=true" width="24" height="24">|`arrowHookUpLeft32Light`|`ic_fluent_arrow_hook_up_left_32_light`|
+|Arrow Hook Up Right|<img src="assets/Arrow Hook Up Right/SVG/ic_fluent_arrow_hook_up_right_32_light.svg?raw=true" width="24" height="24">|`arrowHookUpRight32Light`|`ic_fluent_arrow_hook_up_right_32_light`|
 |Arrow Redo|<img src="assets/Arrow Redo/SVG/ic_fluent_arrow_redo_32_light.svg?raw=true" width="24" height="24">|`arrowRedo32Light`|`ic_fluent_arrow_redo_32_light`|
 |Arrow Reply|<img src="assets/Arrow Reply/SVG/ic_fluent_arrow_reply_32_light.svg?raw=true" width="24" height="24">|`arrowReply32Light`|`ic_fluent_arrow_reply_32_light`|
 |Arrow Reply All|<img src="assets/Arrow Reply All/SVG/ic_fluent_arrow_reply_all_32_light.svg?raw=true" width="24" height="24">|`arrowReplyAll32Light`|`ic_fluent_arrow_reply_all_32_light`|
 |Arrow Undo|<img src="assets/Arrow Undo/SVG/ic_fluent_arrow_undo_32_light.svg?raw=true" width="24" height="24">|`arrowUndo32Light`|`ic_fluent_arrow_undo_32_light`|
 |Attach|<img src="assets/Attach/SVG/ic_fluent_attach_32_light.svg?raw=true" width="24" height="24">|`attach32Light`|`ic_fluent_attach_32_light`|
 |Auto Fit|<img src="assets/Auto Fit/SVG/ic_fluent_auto_fit_32_light.svg?raw=true" width="24" height="24">|`autoFit32Light`|`ic_fluent_auto_fit_32_light`|
+|Auto Fit Width|<img src="assets/Auto Fit Width/SVG/ic_fluent_auto_fit_width_32_light.svg?raw=true" width="24" height="24">|`autoFitWidth32Light`|`ic_fluent_auto_fit_width_32_light`|
 |Autocorrect|<img src="assets/Autocorrect/SVG/ic_fluent_autocorrect_32_light.svg?raw=true" width="24" height="24">|`autocorrect32Light`|`ic_fluent_autocorrect_32_light`|
 |Breakout Room|<img src="assets/Breakout Room/SVG/ic_fluent_breakout_room_32_light.svg?raw=true" width="24" height="24">|`breakoutRoom32Light`|`ic_fluent_breakout_room_32_light`|
 |Broom|<img src="assets/Broom/SVG/ic_fluent_broom_32_light.svg?raw=true" width="24" height="24">|`broom32Light`|`ic_fluent_broom_32_light`|
@@ -53,14 +58,19 @@
 |Copy|<img src="assets/Copy/SVG/ic_fluent_copy_32_light.svg?raw=true" width="24" height="24">|`copy32Light`|`ic_fluent_copy_32_light`|
 |Crop|<img src="assets/Crop/SVG/ic_fluent_crop_32_light.svg?raw=true" width="24" height="24">|`crop32Light`|`ic_fluent_crop_32_light`|
 |Cursor|<img src="assets/Cursor/SVG/ic_fluent_cursor_32_light.svg?raw=true" width="24" height="24">|`cursor32Light`|`ic_fluent_cursor_32_light`|
+|Cut|<img src="assets/Cut/SVG/ic_fluent_cut_32_light.svg?raw=true" width="24" height="24">|`cut32Light`|`ic_fluent_cut_32_light`|
 |Delete|<img src="assets/Delete/SVG/ic_fluent_delete_32_light.svg?raw=true" width="24" height="24">|`delete32Light`|`ic_fluent_delete_32_light`|
 |Dismiss|<img src="assets/Dismiss/SVG/ic_fluent_dismiss_32_light.svg?raw=true" width="24" height="24">|`dismiss32Light`|`ic_fluent_dismiss_32_light`|
 |Dismiss Circle|<img src="assets/Dismiss Circle/SVG/ic_fluent_dismiss_circle_32_light.svg?raw=true" width="24" height="24">|`dismissCircle32Light`|`ic_fluent_dismiss_circle_32_light`|
+|Document|<img src="assets/Document/SVG/ic_fluent_document_48_light.svg?raw=true" width="24" height="24">|`document24Light`<br />`document28Light`<br />`document32Light`<br />`document48Light`|`ic_fluent_document_24_light`<br />`ic_fluent_document_28_light`<br />`ic_fluent_document_32_light`<br />`ic_fluent_document_48_light`|
 |Document Lightning|<img src="assets/Document Lightning/SVG/ic_fluent_document_lightning_32_light.svg?raw=true" width="24" height="24">|`documentLightning32Light`|`ic_fluent_document_lightning_32_light`|
 |Document Signature|<img src="assets/Document Signature/SVG/ic_fluent_document_signature_32_light.svg?raw=true" width="24" height="24">|`documentSignature32Light`|`ic_fluent_document_signature_32_light`|
+|Document Sparkle|<img src="assets/Document Sparkle/SVG/ic_fluent_document_sparkle_48_light.svg?raw=true" width="24" height="24">|`documentSparkle24Light`<br />`documentSparkle28Light`<br />`documentSparkle32Light`<br />`documentSparkle48Light`|`ic_fluent_document_sparkle_24_light`<br />`ic_fluent_document_sparkle_28_light`<br />`ic_fluent_document_sparkle_32_light`<br />`ic_fluent_document_sparkle_48_light`|
 |Door Arrow Right|<img src="assets/Door Arrow Right/SVG/ic_fluent_door_arrow_right_32_light.svg?raw=true" width="24" height="24">|`doorArrowRight32Light`|`ic_fluent_door_arrow_right_32_light`|
 |Edit|<img src="assets/Edit/SVG/ic_fluent_edit_32_light.svg?raw=true" width="24" height="24">|`edit32Light`|`ic_fluent_edit_32_light`|
 |Emoji|<img src="assets/Emoji/SVG/ic_fluent_emoji_32_light.svg?raw=true" width="24" height="24">|`emoji32Light`|`ic_fluent_emoji_32_light`|
+|Eye|<img src="assets/Eye/SVG/ic_fluent_eye_32_light.svg?raw=true" width="24" height="24">|`eye32Light`|`ic_fluent_eye_32_light`|
+|Eye Off|<img src="assets/Eye Off/SVG/ic_fluent_eye_off_32_light.svg?raw=true" width="24" height="24">|`eyeOff32Light`|`ic_fluent_eye_off_32_light`|
 |Filter|<img src="assets/Filter/SVG/ic_fluent_filter_32_light.svg?raw=true" width="24" height="24">|`filter32Light`|`ic_fluent_filter_32_light`|
 |Flag|<img src="assets/Flag/SVG/ic_fluent_flag_32_light.svg?raw=true" width="24" height="24">|`flag32Light`|`ic_fluent_flag_32_light`|
 |Flag Off|<img src="assets/Flag Off/SVG/ic_fluent_flag_off_32_light.svg?raw=true" width="24" height="24">|`flagOff32Light`|`ic_fluent_flag_off_32_light`|
@@ -68,6 +78,7 @@
 |Folder Arrow Right|<img src="assets/Folder Arrow Right/SVG/ic_fluent_folder_arrow_right_32_light.svg?raw=true" width="24" height="24">|`folderArrowRight32Light`|`ic_fluent_folder_arrow_right_32_light`|
 |Folder Mail|<img src="assets/Folder Mail/SVG/ic_fluent_folder_mail_32_light.svg?raw=true" width="24" height="24">|`folderMail32Light`|`ic_fluent_folder_mail_32_light`|
 |Hand Draw|<img src="assets/Hand Draw/SVG/ic_fluent_hand_draw_32_light.svg?raw=true" width="24" height="24">|`handDraw32Light`|`ic_fluent_hand_draw_32_light`|
+|History|<img src="assets/History/SVG/ic_fluent_history_32_light.svg?raw=true" width="24" height="24">|`history32Light`|`ic_fluent_history_32_light`|
 |Image Add|<img src="assets/Image Add/SVG/ic_fluent_image_add_32_light.svg?raw=true" width="24" height="24">|`imageAdd32Light`|`ic_fluent_image_add_32_light`|
 |Image Alt Text|<img src="assets/Image Alt Text/SVG/ic_fluent_image_alt_text_32_light.svg?raw=true" width="24" height="24">|`imageAltText32Light`|`ic_fluent_image_alt_text_32_light`|
 |Image Copy|<img src="assets/Image Copy/SVG/ic_fluent_image_copy_32_light.svg?raw=true" width="24" height="24">|`imageCopy32Light`|`ic_fluent_image_copy_32_light`|
@@ -83,6 +94,7 @@
 |Layout Row Two Focus Top|<img src="assets/Layout Row Two Focus Top/SVG/ic_fluent_layout_row_two_focus_top_32_light.svg?raw=true" width="24" height="24">|`layoutRowTwoFocusTop32Light`|`ic_fluent_layout_row_two_focus_top_32_light`|
 |Layout Row Two Focus Top Settings|<img src="assets/Layout Row Two Focus Top Settings/SVG/ic_fluent_layout_row_two_focus_top_settings_32_light.svg?raw=true" width="24" height="24">|`layoutRowTwoFocusTopSettings32Light`|`ic_fluent_layout_row_two_focus_top_settings_32_light`|
 |Layout Row Two Settings|<img src="assets/Layout Row Two Settings/SVG/ic_fluent_layout_row_two_settings_32_light.svg?raw=true" width="24" height="24">|`layoutRowTwoSettings32Light`|`ic_fluent_layout_row_two_settings_32_light`|
+|Lightbulb|<img src="assets/Lightbulb/SVG/ic_fluent_lightbulb_32_light.svg?raw=true" width="24" height="24">|`lightbulb32Light`|`ic_fluent_lightbulb_32_light`|
 |Link|<img src="assets/Link/SVG/ic_fluent_link_32_light.svg?raw=true" width="24" height="24">|`link32Light`|`ic_fluent_link_32_light`|
 |Lock Closed|<img src="assets/Lock Closed/SVG/ic_fluent_lock_closed_32_light.svg?raw=true" width="24" height="24">|`lockClosed32Light`|`ic_fluent_lock_closed_32_light`|
 |Lock Open|<img src="assets/Lock Open/SVG/ic_fluent_lock_open_32_light.svg?raw=true" width="24" height="24">|`lockOpen32Light`|`ic_fluent_lock_open_32_light`|
@@ -95,8 +107,10 @@
 |Mail List|<img src="assets/Mail List/SVG/ic_fluent_mail_list_32_light.svg?raw=true" width="24" height="24">|`mailList32Light`|`ic_fluent_mail_list_32_light`|
 |Mail Multiple|<img src="assets/Mail Multiple/SVG/ic_fluent_mail_multiple_32_light.svg?raw=true" width="24" height="24">|`mailMultiple32Light`|`ic_fluent_mail_multiple_32_light`|
 |Mail Read|<img src="assets/Mail Read/SVG/ic_fluent_mail_read_32_light.svg?raw=true" width="24" height="24">|`mailRead32Light`|`ic_fluent_mail_read_32_light`|
+|Mail Read Multiple|<img src="assets/Mail Read Multiple/SVG/ic_fluent_mail_read_multiple_32_light.svg?raw=true" width="24" height="24">|`mailReadMultiple32Light`|`ic_fluent_mail_read_multiple_32_light`|
 |Mail Rewind|<img src="assets/Mail Rewind/SVG/ic_fluent_mail_rewind_32_light.svg?raw=true" width="24" height="24">|`mailRewind32Light`|`ic_fluent_mail_rewind_32_light`|
 |Mail Settings|<img src="assets/Mail Settings/SVG/ic_fluent_mail_settings_32_light.svg?raw=true" width="24" height="24">|`mailSettings32Light`|`ic_fluent_mail_settings_32_light`|
+|Mail Template|<img src="assets/Mail Template/SVG/ic_fluent_mail_template_32_light.svg?raw=true" width="24" height="24">|`mailTemplate32Light`|`ic_fluent_mail_template_32_light`|
 |Mail Unread|<img src="assets/Mail Unread/SVG/ic_fluent_mail_unread_32_light.svg?raw=true" width="24" height="24">|`mailUnread32Light`|`ic_fluent_mail_unread_32_light`|
 |Mic|<img src="assets/Mic/SVG/ic_fluent_mic_32_light.svg?raw=true" width="24" height="24">|`mic32Light`|`ic_fluent_mic_32_light`|
 |Molecule|<img src="assets/Molecule/SVG/ic_fluent_molecule_32_light.svg?raw=true" width="24" height="24">|`molecule32Light`|`ic_fluent_molecule_32_light`|
@@ -140,7 +154,9 @@
 |Stamp|<img src="assets/Stamp/SVG/ic_fluent_stamp_32_light.svg?raw=true" width="24" height="24">|`stamp32Light`|`ic_fluent_stamp_32_light`|
 |Star Add|<img src="assets/Star Add/SVG/ic_fluent_star_add_32_light.svg?raw=true" width="24" height="24">|`starAdd32Light`|`ic_fluent_star_add_32_light`|
 |Star Arrow Right|<img src="assets/Star Arrow Right/SVG/ic_fluent_star_arrow_right_32_light.svg?raw=true" width="24" height="24">|`starArrowRight32Light`|`ic_fluent_star_arrow_right_32_light`|
+|Tab Add|<img src="assets/Tab Add/SVG/ic_fluent_tab_add_32_light.svg?raw=true" width="24" height="24">|`tabAdd32Light`|`ic_fluent_tab_add_32_light`|
 |Table|<img src="assets/Table/SVG/ic_fluent_table_32_light.svg?raw=true" width="24" height="24">|`table32Light`|`ic_fluent_table_32_light`|
+|Table Alt Text|<img src="assets/Table Alt Text/SVG/ic_fluent_table_alt_text_32_light.svg?raw=true" width="24" height="24">|`tableAltText32Light`|`ic_fluent_table_alt_text_32_light`|
 |Table Cells Merge|<img src="assets/Table Cells Merge/SVG/ic_fluent_table_cells_merge_32_light.svg?raw=true" width="24" height="24">|`tableCellsMerge32Light`|`ic_fluent_table_cells_merge_32_light`|
 |Table Cells Split|<img src="assets/Table Cells Split/SVG/ic_fluent_table_cells_split_32_light.svg?raw=true" width="24" height="24">|`tableCellsSplit32Light`|`ic_fluent_table_cells_split_32_light`|
 |Table Dismiss|<img src="assets/Table Dismiss/SVG/ic_fluent_table_dismiss_32_light.svg?raw=true" width="24" height="24">|`tableDismiss32Light`|`ic_fluent_table_dismiss_32_light`|
@@ -162,6 +178,8 @@
 |Translate|<img src="assets/Translate/SVG/ic_fluent_translate_32_light.svg?raw=true" width="24" height="24">|`translate32Light`|`ic_fluent_translate_32_light`|
 |Video|<img src="assets/Video/SVG/ic_fluent_video_32_light.svg?raw=true" width="24" height="24">|`video32Light`|`ic_fluent_video_32_light`|
 |Video Clip|<img src="assets/Video Clip/SVG/ic_fluent_video_clip_32_light.svg?raw=true" width="24" height="24">|`videoClip32Light`|`ic_fluent_video_clip_32_light`|
+|Weather Moon|<img src="assets/Weather Moon/SVG/ic_fluent_weather_moon_32_light.svg?raw=true" width="24" height="24">|`weatherMoon32Light`|`ic_fluent_weather_moon_32_light`|
+|Weather Sunny|<img src="assets/Weather Sunny/SVG/ic_fluent_weather_sunny_32_light.svg?raw=true" width="24" height="24">|`weatherSunny32Light`|`ic_fluent_weather_sunny_32_light`|
 |Window|<img src="assets/Window/SVG/ic_fluent_window_32_light.svg?raw=true" width="24" height="24">|`window32Light`|`ic_fluent_window_32_light`|
 |Wrench Screwdriver|<img src="assets/Wrench Screwdriver/SVG/ic_fluent_wrench_screwdriver_32_light.svg?raw=true" width="24" height="24">|`wrenchScrewdriver32Light`|`ic_fluent_wrench_screwdriver_32_light`|
 |Zoom In|<img src="assets/Zoom In/SVG/ic_fluent_zoom_in_32_light.svg?raw=true" width="24" height="24">|`zoomIn32Light`|`ic_fluent_zoom_in_32_light`|

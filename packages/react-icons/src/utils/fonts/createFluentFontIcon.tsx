@@ -2,6 +2,7 @@ import * as React from 'react';
 import { FluentIconsProps } from '../FluentIconsProps.types';
 import { makeStyles, makeStaticStyles, mergeClasses } from "@griffel/react";
 import { useIconState } from '../useIconState';
+import { fontIconClassName } from '../constants';
 
 import fontFilledTtf from './FluentSystemIcons-Filled.ttf';
 import fontFilledWoff from './FluentSystemIcons-Filled.woff';
@@ -23,7 +24,7 @@ export const enum FontFile {
     Filled = 0,
     Regular = 1,
     Resizable = 2,
-		Light = 3
+	Light = 3
 }
 
 const FONT_FAMILY_MAP = {
@@ -69,9 +70,10 @@ const useRootStyles = makeStyles({
         display: 'inline-block',
         fontStyle: 'normal',
         lineHeight: '1em',
+        color: 'currentColor',
 
         "@media (forced-colors: active)": {
-            forcedColorAdjust: 'none',
+            forcedColorAdjust: 'auto',
         }
     },
     [FontFile.Filled]: {
@@ -96,7 +98,7 @@ export function createFluentFontIcon(displayName: string, codepoint: string, fon
     const Component: React.FC<FluentIconsProps<React.HTMLAttributes<HTMLElement>, HTMLElement>> & { codepoint: string} = (props) => {
         useStaticStyles();
         const styles = useRootStyles();
-        const className = mergeClasses(styles.root, styles[font], props.className);
+        const className = mergeClasses(styles.root, styles[font], fontIconClassName, props.className);
         const state = useIconState<React.HTMLAttributes<HTMLElement>, HTMLElement>({...props, className}, { flipInRtl: options?.flipInRtl });
 
 
